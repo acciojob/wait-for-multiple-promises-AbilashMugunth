@@ -1,21 +1,23 @@
 let table = document.querySelector("#output");
-let rowCount = 0;
 
-function createRow(text, delay) {
+function createRow(i, delay) {
   // Create a new row
   let newRow = table.insertRow();
-  newRow.id = `p${++rowCount}`;
 
   // Insert two cells (columns) into the new row
   let cell1 = newRow.insertCell(0);
   let cell2 = newRow.insertCell(1);
 
   // Add data to the cells
-  cell1.innerHTML = text;
+  if (typeof i == "number") {
+    cell1.innerHTML = `Promise ${i}`;
+  } else {
+    cell1.innerHTML = i;
+  }
   cell2.innerHTML = delay;
 }
 
-createRow("Loading...", "Loading...");
+createRow("Loading", "Loading...");
 
 function generateRandom() {
   const randomNumber = (Math.random() * (3 - 1) + 1).toFixed(3);
@@ -49,14 +51,15 @@ const p3 = new Promise((resolve) => {
 let promiseArr = [p1, p2, p3];
 
 Promise.all(promiseArr).then((values) => {
-  // createRow(2, "Loading...");
-  // createRow(3, "Loading...");
+  table.children[0].remove();
+  createRow(1, "");
+  createRow(2, "");
+  createRow(3, "");
   let total = 0;
   values.forEach((result, i) => {
-    // total += result.time;
-    let row = document.getElementById(`p${i + 1}`);
-    console.log(row);
-    // row.children[1].textContent = result.time;
+    total += result.time;
+    table.children[i].children[1].textContent = result.time;
   });
-  // createRow(4, parseFloat(total.toFixed(3)));
+
+  createRow("Total", parseFloat(total.toFixed(3)));
 });
