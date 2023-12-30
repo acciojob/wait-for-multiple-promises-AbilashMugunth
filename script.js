@@ -17,7 +17,7 @@ function createRow(i, delay) {
   cell2.innerHTML = delay;
 }
 
-createRow("Loading", "Loading...");
+createRow("Loading...", "Loading...");
 
 function generateRandom() {
   const randomNumber = (Math.random() * (3 - 1) + 1).toFixed(3);
