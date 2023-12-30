@@ -11,8 +11,8 @@ function createRow(i, delay) {
   let cell2 = newRow.insertCell(1);
 
   // Add data to the cells
-  cell1.innerHTML = `${i <= 3 ? "Promise " + i : "Total"}`;
-  cell2.innerHTML = delay;
+  cell1.textContent = `${i <= 3 ? "Promise " + i : "Total"}`;
+  cell2.textContent = delay;
 }
 
 createRow(1, "Loading...");
