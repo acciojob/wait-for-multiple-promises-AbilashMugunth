@@ -1,9 +1,9 @@
 
-let table = document.querySelector(".table");
+let tbody = document.querySelector("#output");
 
 function createRow(i, delay) {
   // Create a new row
-  let newRow = table.insertRow();
+  let newRow = tbody.insertRow();
   newRow.id = `p${i}`;
 
   // Insert two cells (columns) into the new row
